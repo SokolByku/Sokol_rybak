@@ -19,21 +19,36 @@ RegisterServerEvent('sokol_dajrybe-lowienie')
 AddEventHandler('sokol_dajrybe-lowienie',function()
     local source = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.GiveInventoryItem('ryba', 1)
+    local item = xPlayer.getInventoryItem('ryba');
+    if item.count < item.limit then
+        xPlayer.GiveInventoryItem('ryba', 1);
+    else
+		TriggerClientEvent('esx:showNotification', source, 'Nie masz już miejsca na: '..item.label.." w swoim ekwipunku!");
+    end
 end)
 
 RegisterServerEvent('sokol_dajrybeMala-lowienie')
 AddEventHandler('sokol_dajrybeMala-lowienie',function()
     local source = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.GiveInventoryItem('malaryba', 1)
+	local item = xPlayer.getInventoryItem('malaryba');
+    if item.count < item.limit then
+    	xPlayer.GiveInventoryItem('malaryba', 1)
+	else
+		TriggerClientEvent('esx:showNotification', source, 'Nie masz już miejsca na: '..item.label.." w swoim ekwipunku!");
+    end
 end)
 
 RegisterServerEvent('sokol_dajrybeDuza-lowienie')
 AddEventHandler('sokol_dajrybeDuza-lowienie',function()
     local source = source
     local xPlayer = ESX.GetPlayerFromId(source)
-    xPlayer.GiveInventoryItem('duzaryba', 1)
+	local item = xPlayer.getInventoryItem('malaryba');
+    if item.count < item.limit then
+    	xPlayer.GiveInventoryItem('duzaryba', 1)
+	else
+		TriggerClientEvent('esx:showNotification', source, 'Nie masz już miejsca na: '..item.label.." w swoim ekwipunku!");
+    end		
 end)
 
 
